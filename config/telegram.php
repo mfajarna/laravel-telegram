@@ -33,8 +33,8 @@ return [
     */
     'bots'                         => [
         'mybot' => [
-            'username'            => 'iconetplus',
-            'token'               => env('TELEGRAM_BOT_TOKEN', '1815998889:AAGuTx4z2mt53fEr0fR-RDsIfudxd3IKzFs'),
+            'username'            => 'iconnet_laravel_tester_bot',
+            'token'               => env('TELEGRAM_BOT_TOKEN', '1928721748:AAEzEz6rArYv_tFTyrIlJReurBIMAWjb_b4'),
             'certificate_path'    => env('TELEGRAM_CERTIFICATE_PATH', ''),
             'webhook_url'         => env('TELEGRAM_WEBHOOK_URL', ''),
             'commands'            => [

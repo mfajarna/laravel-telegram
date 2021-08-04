@@ -54,8 +54,12 @@ Route::group(['middleware'=>['auth','role:1']],function(){
     Route::get('/hapus/{id}/vendor', [VendorController::class, 'hapus']);
     Route::get('/maps',[MapsController::class,'index']);
     Route::post('/proses',[MapsController::class,'proses']);
-    Route::get('/aktivasi/vendor',[App\Http\Controllers\AktivasiController::class,'index']);
-    Route::post('/proses/vendor',[App\Http\Controllers\AktivasiController::class,'prosesdata']);
+    // Route::get('/aktivasi/vendor',[App\Http\Controllers\AktivasiController::class,'index']);
+    // Route::post('/proses/vendor',[App\Http\Controllers\AktivasiController::class,'prosesdata']);
+    Route::prefix('aktivasi')->group(function(){
+        Route::resource('vendor', AktivasiController::class);
+        Route::get('update-aktivasi', [AktivasiController::class, 'updatedActivity']);
+    });
 
 
 

@@ -127,7 +127,7 @@ The above copyright notice and this permission notice shall be included in all c
                 @endif
 
                 <br/>
-                <form action="{{url ('aktivasi') }}" method="POST">
+                <form action="{{ route('vendor.store') }}" method="POST">
                     {{csrf_field()}}
 
                     <div class="form-group mb-3">
@@ -148,7 +148,7 @@ The above copyright notice and this permission notice shall be included in all c
                     </div>
                     <div class="form-group mb-3">
                         <label  class="bmd-label-floating">Nama</label>
-                        <input type="text" name="name" class="form-control" value="{{old('name')}}">
+                        <input type="text" name="nama" class="form-control" value="{{old('nama')}}">
                     </div>
                     <div class="form-group mb-3">
                         <label  class="bmd-label-floating">Alamat</label>
