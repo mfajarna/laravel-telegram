@@ -127,7 +127,7 @@ The above copyright notice and this permission notice shall be included in all c
                 @endif
 
                 <br/>
-                <form action="{{ route('vendor.store') }}" method="POST">
+                <form action="{{ route('vendor.store') }}" method="POST" enctype="multipart/form-data">
                     {{csrf_field()}}
 
                     <div class="form-group mb-3">
@@ -181,7 +181,14 @@ The above copyright notice and this permission notice shall be included in all c
                     <div class="form-group mb-3">
                         <label class="bmd-label-floating">OLT</label>
                         <input type="text" name="olt" class="form-control" value="{{old('olt')}}">
-                  </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="bmd-label-floating">Photo</label>
+                    </div>
+                    <div class="mb-3 ">
+                        <input class="form-control" name="file" type="file">
+                    </div>
+
                     <input type="submit" value="proses" name="submit" class="btn btn-md btn-primary">
                 </form>
                 </div>

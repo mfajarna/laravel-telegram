@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Telegram\Bot\FileUpload\InputFile;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
 class AktivasiController extends Controller
@@ -48,8 +50,11 @@ class AktivasiController extends Controller
             'port' => 'required',
             'snont' => 'required',
             'macont'  => 'required',
-            'olt'   =>'required'
-     ]);
+            'olt'   =>'required',
+            'file' => 'file|mimes:jpeg,png,gif'
+        ]);
+
+        $photo = $request->file('file');
 
         $inputForm = "Data Aktivasi Iconnet\n\n"
                     ."Tanggal: ". $request->date . "\n"
@@ -69,7 +74,13 @@ class AktivasiController extends Controller
         Telegram::sendMessage([
             'chat_id' => env('TELEGRAM_CHANNEL_ID', '-1001599611180'),
             'parse_mode' => 'HTML',
-            'text' => $inputForm
+            'text' => $inputForm,
+
+        ]);
+
+        Telegram::sendPhoto([
+            'chat_id' => env('TELEGRAM_CHANNEL_ID', '-1001599611180'),
+            'photo' => InputFile::createFromContents(file_get_contents($photo->getRealPath()), Str::random(10) . '.' . $photo->getClientOriginalExtension())
         ]);
 
         return redirect()->back();
